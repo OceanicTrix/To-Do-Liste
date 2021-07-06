@@ -4,14 +4,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".createActivity">
+    tools:context=".createActivity"
+    android:padding="20dp">
     <TextView
+        android:id="@+id/tvTitel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Titel"
+        android:text="Titel"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="0"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.1"
+
+        android:paddingBottom="5dp"
+        android:textSize="20dp"
+        android:textColor="#000000"/>
+
+    <EditText
+        android:id="@+id/etTitel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Titel"
+        android:textSize="24dp"
+        android:paddingBottom="15dp"
+        app:layout_constraintTop_toBottomOf="@id/tvTitel"
+        app:layout_constraintVertical_bias="0.143" />
+
+    <TextView
+        android:id="@+id/tvDatum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Datum"
+        android:textSize="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etTitel"
+        android:textColor="#000000"/>
+
+    <EditText
+        android:id="@+id/etDatum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Datum"
+        android:textSize="24dp"
+        app:layout_constraintTop_toBottomOf="@id/tvDatum"
+        android:inputType="date"/>
+    <TextView
+        android:id="@+id/tvBeschreibung"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Beschreibung"
+        android:textSize="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintTop_toBottomOf="@id/etDatum"
+        android:textColor="#000000"/>
+
+    <EditText
+        android:id="@+id/etBeschreibung"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:gravity="top"
+        android:hint="Beschreibung"
+        android:inputType="textMultiLine|text"
+        android:textSize="24dp"
+        app:layout_constraintTop_toBottomOf="@id/tvBeschreibung" />
+
+    <Button
+        android:id="@+id/create_btnSpeichern"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Speichern"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
