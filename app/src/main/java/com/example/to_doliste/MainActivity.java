@@ -9,10 +9,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.to_doliste.room.AufgabeData;
 import com.example.to_doliste.room.AufgabeRoomDatabase;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
     AufgabeRoomDatabase db = null;
@@ -24,6 +27,10 @@ public class MainActivity extends AppCompatActivity {
         db = AufgabeRoomDatabase.getInstance(this);
         Log.d("tag", db.getRoomDao().getAll().toString());
         addAufgabenToClickableList();
+        if(db.getRoomDao().getAll().size() < 1){
+            TextView textView;
+
+        }
     }
 
     @Override
