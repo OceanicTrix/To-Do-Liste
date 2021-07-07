@@ -69,12 +69,13 @@
         android:layout_marginTop="440dp"
         android:layout_marginRight="10dp"
         android:text="Verwerfen"/>
+
     <Button
         android:id="@+id/update_btnLoeschen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="440dp"
-        android:layout_marginRight="300dp"
-        android:text="Löschen"/>
+        android:layout_marginTop="390dp"
+        android:layout_marginRight="250dp"
+        android:text="Löschen" />
 </RelativeLayout>
