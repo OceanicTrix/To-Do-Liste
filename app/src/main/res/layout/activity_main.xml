@@ -9,7 +9,16 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/auftraege"/>
+        android:id="@+id/auftraege">
+
+        <TextView
+            android:id="@+id/keineAufgaben"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Es gibt noch keine Aufgaben"
+            android:textAlignment="center"
+            android:textSize="20dp" />
+    </ListView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/main_Create"
