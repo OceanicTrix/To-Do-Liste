@@ -68,14 +68,22 @@ public class UpdateActivity extends AppCompatActivity {
             }
         });
 
-        Button verwerfen = findViewById(R.id.update_btnVerwerfen);
-        verwerfen.setOnClickListener(new View.OnClickListener() {
+        Button loeschen = findViewById(R.id.update_btnLoeschen);
+        loeschen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(v.getContext(), MainActivity.class);
                 data.setId(aufgabeId);
                 Log.d("id", aufgabeId + "");
                 db.getRoomDao().delete(data);
+                startActivity(myIntent);
+            }
+        });
+        Button verwerfen = findViewById(R.id.update_btnVerwerfen);
+        loeschen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(v.getContext(), MainActivity.class);
                 startActivity(myIntent);
             }
         });
