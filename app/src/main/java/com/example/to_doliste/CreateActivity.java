@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.to_doliste.room.AufgabeData;
 import com.example.to_doliste.room.AufgabeRoomDatabase;
@@ -45,13 +46,14 @@ public class CreateActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(v.getContext(), MainActivity.class);
-                EditText editTextTitel = (EditText)findViewById(R.id.etTitel);
-                EditText editTextDatum = (EditText)findViewById(R.id.etDatum);
-                EditText editTextBeschreibung = (EditText)findViewById(R.id.etBeschreibung);
+                EditText editTextTitel = (EditText)findViewById(R.id.create_etTitel);
+                EditText editTextDatum = (EditText)findViewById(R.id.create_etDatum);
+                EditText editTextBeschreibung = (EditText)findViewById(R.id.create_etBeschreibung);
                 data.setTitel(editTextTitel.getText().toString());
                 data.setDatum(editTextDatum.getText().toString());
                 data.setBeschreibung(editTextBeschreibung.getText().toString());
                 db.getRoomDao().insert(data);
+                Toast.makeText(CreateActivity.this, "Deine Aufgabe wurde hinzugefügt", Toast.LENGTH_SHORT).show();
                 startActivity(myIntent);
             }
         });
