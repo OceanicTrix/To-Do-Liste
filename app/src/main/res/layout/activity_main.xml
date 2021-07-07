@@ -9,16 +9,7 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/auftraege">
-
-        <TextView
-            android:id="@+id/keineAufgaben"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Es gibt noch keine Aufgaben"
-            android:textAlignment="center"
-            android:textSize="20dp" />
-    </ListView>
+        android:id="@+id/auftraege"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/main_Create"
@@ -31,5 +22,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:clickable="true"
         app:backgroundTint="@color/purple_500"/>
-
+    <TextView
+        android:id="@+id/keineAufgaben"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Es gibt noch keine Aufgaben"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textAlignment="center" />
 </androidx.constraintlayout.widget.ConstraintLayout>

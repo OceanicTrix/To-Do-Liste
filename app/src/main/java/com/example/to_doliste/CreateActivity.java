@@ -54,7 +54,6 @@ public class CreateActivity extends AppCompatActivity {
                 EditText editTextDatum = (EditText)findViewById(R.id.create_etDatum);
                 EditText editTextBeschreibung = (EditText)findViewById(R.id.create_etBeschreibung);
                 Log.d("etwas", editTextTitel.getText().toString());
-
                 if (editTextTitel.getText().toString() != "" && editTextDatum != null && editTextBeschreibung != null){
                     data.setTitel(editTextTitel.getText().toString());
                     data.setDatum(editTextDatum.getText().toString());
@@ -69,7 +68,7 @@ public class CreateActivity extends AppCompatActivity {
                             finish();
                         }
                     });
-                    dialogBuilder.setMessage("Keine Angabe darf leer sein. Das Hinzufügen ist fehlgeschlagen.").setTitle("Fehler");
+                    dialogBuilder.setMessage("Keine Angabe darf leer sein. Das Erstellen der Aufgabe ist fehlgeschlagen.").setTitle("Fehler");
                 }
                 startActivity(myIntent);
             }

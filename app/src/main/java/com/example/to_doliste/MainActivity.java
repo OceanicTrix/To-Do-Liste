@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         db = AufgabeRoomDatabase.getInstance(this);
         Log.d("tag", db.getRoomDao().getAll().toString());
         addAufgabenToClickableList();
-        if(db.getRoomDao().getAll().size() > 1){
+        if(db.getRoomDao().getAll().size() > 0){
             findViewById(R.id.keineAufgaben).setVisibility(View.GONE);
         }
     }
