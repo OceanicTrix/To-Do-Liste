@@ -53,24 +53,25 @@ public class CreateActivity extends AppCompatActivity {
                 EditText editTextTitel = (EditText)findViewById(R.id.create_etTitel);
                 EditText editTextDatum = (EditText)findViewById(R.id.create_etDatum);
                 EditText editTextBeschreibung = (EditText)findViewById(R.id.create_etBeschreibung);
-                Log.d("etwas", editTextTitel.getText().toString());
-                if (editTextTitel.getText().toString() != "" && editTextDatum != null && editTextBeschreibung != null){
+
+                if (!editTextTitel.getText().toString().isEmpty() && !editTextDatum.getText().toString().isEmpty()){
                     data.setTitel(editTextTitel.getText().toString());
                     data.setDatum(editTextDatum.getText().toString());
                     data.setBeschreibung(editTextBeschreibung.getText().toString());
                     db.getRoomDao().insert(data);
                     Toast.makeText(CreateActivity.this, "Deine Aufgabe wurde hinzugefügt", Toast.LENGTH_SHORT).show();
+                    startActivity(myIntent);
                 }
                 else{
                     dialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            // Closes this activity
-                            finish();
+
                         }
                     });
                     dialogBuilder.setMessage("Keine Angabe darf leer sein. Das Erstellen der Aufgabe ist fehlgeschlagen.").setTitle("Fehler");
+                    AlertDialog dialog = dialogBuilder.create();
+                    dialog.show();
                 }
-                startActivity(myIntent);
             }
         });
 

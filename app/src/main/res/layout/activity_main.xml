@@ -21,7 +21,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:clickable="true"
-        app:backgroundTint="@color/purple_500"/>
+        app:backgroundTint="@color/purple_500"
+        app:tint="@color/white"/>
     <TextView
         android:id="@+id/keineAufgaben"
         android:layout_width="match_parent"

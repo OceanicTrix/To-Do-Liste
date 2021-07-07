@@ -3,6 +3,8 @@ package com.example.to_doliste;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.to_doliste.room.AufgabeData;
 import com.example.to_doliste.room.AufgabeRoomDatabase;
@@ -19,6 +22,7 @@ public class UpdateActivity extends AppCompatActivity {
     AufgabeData data = new AufgabeData();
     AufgabeRoomDatabase db = null;
     EditText editTextTitel, editTextDatum, editTextBeschreibung;
+    AlertDialog.Builder dialogBuilder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +45,7 @@ public class UpdateActivity extends AppCompatActivity {
         editTextTitel.setText(titel);
         editTextDatum.setText(datum);
         editTextBeschreibung.setText(beschreibung);
+        dialogBuilder = new AlertDialog.Builder(this);
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -59,12 +64,24 @@ public class UpdateActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(v.getContext(), MainActivity.class);
-                data.setId(aufgabeId);
-                data.setTitel(editTextTitel.getText().toString());
-                data.setDatum(editTextDatum.getText().toString());
-                data.setBeschreibung(editTextBeschreibung.getText().toString());
-                db.getRoomDao().update(data);
-                startActivity(myIntent);
+                if (!editTextTitel.getText().toString().isEmpty() && !editTextDatum.getText().toString().isEmpty()) {
+                    data.setId(aufgabeId);
+                    data.setTitel(editTextTitel.getText().toString());
+                    data.setDatum(editTextDatum.getText().toString());
+                    data.setBeschreibung(editTextBeschreibung.getText().toString());
+                    db.getRoomDao().update(data);
+                    startActivity(myIntent);
+                }
+                else{
+                    dialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+
+                        }
+                    });
+                    dialogBuilder.setMessage("Keine Angabe darf leer sein. Das Erstellen der Aufgabe ist fehlgeschlagen.").setTitle("Fehler");
+                    AlertDialog dialog = dialogBuilder.create();
+                    dialog.show();
+                }
             }
         });
 
@@ -76,6 +93,7 @@ public class UpdateActivity extends AppCompatActivity {
                 data.setId(aufgabeId);
                 Log.d("id", aufgabeId + "");
                 db.getRoomDao().delete(data);
+                Toast.makeText(UpdateActivity.this, "Deine Aufgabe wurde geändert", Toast.LENGTH_SHORT).show();
                 startActivity(myIntent);
             }
             });
