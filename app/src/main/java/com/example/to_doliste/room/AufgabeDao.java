@@ -16,4 +16,5 @@ public interface AufgabeDao {
 
     @Insert
     void insert(AufgabeData data);
+
 }

@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class updateActivity extends AppCompatActivity {
+public class UpdateActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class updateActivity extends AppCompatActivity {
         speichern.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(v.getContext(), updateActivity.class);
+                Intent myIntent = new Intent(v.getContext(), UpdateActivity.class);
                 startActivity(myIntent);
             }
         });
@@ -36,7 +36,7 @@ public class updateActivity extends AppCompatActivity {
         verwerfen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(v.getContext(), updateActivity.class);
+                Intent myIntent = new Intent(v.getContext(), UpdateActivity.class);
                 startActivity(myIntent);
             }
         });
