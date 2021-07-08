@@ -19,7 +19,8 @@
         android:inputType="text"
         android:hint="Titel"
         android:layout_marginTop="50dp"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,7 +37,8 @@
         android:hint="Datum (tt.mm.jjjj)"
         android:layout_marginTop="130dp"
         tools:ignore="TextFields"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,7 +54,8 @@
         android:hint="Beschreibung (Kann leer gelassen werden)"
         android:layout_marginTop="200dp"
         android:gravity="top"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
     <Button
         android:id="@+id/update_btnSpeichern"
         android:layout_width="wrap_content"
