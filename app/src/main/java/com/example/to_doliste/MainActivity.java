@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             ListView aufgaben =  findViewById(R.id.auftraege);
-            ArrayAdapter<AufgabeData> aufgabeAdapter =  new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1);
+            ArrayAdapter<AufgabeData> aufgabeAdapter =  new ArrayAdapter<>(getApplicationContext(), R.layout.list_item);
             aufgabeAdapter.addAll(db.getRoomDao().getAll());
             aufgaben.setAdapter(aufgabeAdapter);
             AdapterView.OnItemClickListener mListClickedHandler = new AdapterView.OnItemClickListener()
