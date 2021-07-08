@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
                 {
                     Intent intent = new Intent(getApplicationContext(), UpdateActivity.class);
                     AufgabeData selected = (AufgabeData) parent.getItemAtPosition(position);
-                    // Folgende Variabeln werden mit dem Intent weitergegeben
                     intent.putExtra("aufgabeId", selected.getId());
                     intent.putExtra("aufgabeTitel", selected.getTitel());
                     intent.putExtra("aufgabeDatum", selected.getDatum());

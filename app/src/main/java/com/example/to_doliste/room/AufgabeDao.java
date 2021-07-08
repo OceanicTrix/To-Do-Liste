@@ -13,8 +13,8 @@ public interface AufgabeDao {
     @Query("SELECT * FROM AufgabeData")
     List<AufgabeData> getAll();
 
-    @Query("SELECT * FROM AufgabeData WHERE id == :id")
-    AufgabeData getById(int id);
+    //@Query("SELECT * FROM AufgabeData WHERE id == :id")
+    //AufgabeData getById(int id);
 
     @Insert
     void insert(AufgabeData data);
