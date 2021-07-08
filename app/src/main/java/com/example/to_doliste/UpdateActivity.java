@@ -23,6 +23,7 @@ public class UpdateActivity extends AppCompatActivity {
     private AufgabeRoomDatabase db = null;
     private EditText etTitel, etDatum, etBeschreibung;
     private AlertDialog.Builder dialogBuilder;
+    private String regex = "^[0-3]{1}[0-9]{1}.([0]{1}[1-9]{1}||[1]{1}[0-2]).[1-9]{1}[0-9]{3}$";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +65,7 @@ public class UpdateActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(v.getContext(), MainActivity.class);
-                if (!etTitel.getText().toString().isEmpty() && !etTitel.getText().toString().isEmpty()) {
+                if (!etTitel.getText().toString().isEmpty() && !etDatum.getText().toString().isEmpty() && etDatum.getText().toString().matches(regex)) {
                     data.setId(aufgabeId);
                     data.setTitel(etTitel.getText().toString());
                     data.setDatum(etDatum.getText().toString());
@@ -79,7 +80,7 @@ public class UpdateActivity extends AppCompatActivity {
 
                         }
                     });
-                    dialogBuilder.setMessage("Keine Angabe darf leer sein. Das Ändern der Aufgabe ist fehlgeschlagen.").setTitle("Fehler");
+                    dialogBuilder.setMessage("Keine Angabe darf leer oder den Vorgaben nicht entsprechen").setTitle("Fehler");
                     AlertDialog dialog = dialogBuilder.create();
                     dialog.show();
                 }

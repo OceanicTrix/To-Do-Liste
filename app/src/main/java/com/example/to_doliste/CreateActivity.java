@@ -21,6 +21,7 @@ public class CreateActivity extends AppCompatActivity {
     private AufgabeData data = new AufgabeData();
     private AufgabeRoomDatabase db = null;
     private AlertDialog.Builder dialogBuilder;
+    private String regex = "^[0-3]{1}[0-9]{1}.([0]{1}[1-9]{1}||[1]{1}[0-2]).[1-9]{1}[0-9]{3}$";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +55,7 @@ public class CreateActivity extends AppCompatActivity {
                 EditText etDatum = findViewById(R.id.create_etDatum);
                 EditText etBeschreibung = findViewById(R.id.create_etBeschreibung);
 
-                if (!etTitel.getText().toString().isEmpty() && !etDatum.getText().toString().isEmpty()){
+                if (!etTitel.getText().toString().isEmpty() && !etDatum.getText().toString().isEmpty() && etDatum.getText().toString().matches(regex)){
                     data.setTitel(etTitel.getText().toString());
                     data.setDatum(etDatum.getText().toString());
                     data.setBeschreibung(etBeschreibung.getText().toString());
@@ -68,7 +69,7 @@ public class CreateActivity extends AppCompatActivity {
 
                         }
                     });
-                    dialogBuilder.setMessage("Keine Angabe darf leer sein. Das Erstellen der Aufgabe ist fehlgeschlagen.").setTitle("Fehler");
+                    dialogBuilder.setMessage("Keine Angabe darf leer oder den Vorgaben nicht entsprechen").setTitle("Fehler");
                     AlertDialog dialog = dialogBuilder.create();
                     dialog.show();
                 }
