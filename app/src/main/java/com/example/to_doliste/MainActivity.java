@@ -9,23 +9,20 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.to_doliste.room.AufgabeData;
 import com.example.to_doliste.room.AufgabeRoomDatabase;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
-    AufgabeRoomDatabase db = null;
+    private AufgabeRoomDatabase db = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         db = AufgabeRoomDatabase.getInstance(this);
-        Log.d("tag", db.getRoomDao().getAll().toString());
         addAufgabenToClickableList();
         if(db.getRoomDao().getAll().size() > 0){
             findViewById(R.id.keineAufgaben).setVisibility(View.GONE);
@@ -60,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     Intent intent = new Intent(getApplicationContext(), UpdateActivity.class);
                     AufgabeData selected = (AufgabeData) parent.getItemAtPosition(position);
-
+                    // Folgende Variabeln werden mit dem Intent weitergegeben
                     intent.putExtra("aufgabeId", selected.getId());
                     intent.putExtra("aufgabeTitel", selected.getTitel());
                     intent.putExtra("aufgabeDatum", selected.getDatum());

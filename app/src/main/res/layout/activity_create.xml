@@ -49,7 +49,7 @@
         android:id="@+id/create_etBeschreibung"
         android:layout_height="200dp"
         android:layout_width="match_parent"
-        android:hint="Beschreibung"
+        android:hint="Beschreibung (Kann leer gelassen werden)"
         android:layout_marginTop="200dp"
         android:gravity="top"
         android:layout_marginLeft="10dp"/>

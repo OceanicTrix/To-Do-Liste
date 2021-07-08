@@ -18,9 +18,9 @@ import com.example.to_doliste.room.AufgabeData;
 import com.example.to_doliste.room.AufgabeRoomDatabase;
 
 public class CreateActivity extends AppCompatActivity {
-    AufgabeData data = new AufgabeData();
-    AufgabeRoomDatabase db = null;
-    AlertDialog.Builder dialogBuilder;
+    private AufgabeData data = new AufgabeData();
+    private AufgabeRoomDatabase db = null;
+    private AlertDialog.Builder dialogBuilder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,14 +50,14 @@ public class CreateActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(v.getContext(), MainActivity.class);
-                EditText editTextTitel = (EditText)findViewById(R.id.create_etTitel);
-                EditText editTextDatum = (EditText)findViewById(R.id.create_etDatum);
-                EditText editTextBeschreibung = (EditText)findViewById(R.id.create_etBeschreibung);
+                EditText etTitel = findViewById(R.id.create_etTitel);
+                EditText etDatum = findViewById(R.id.create_etDatum);
+                EditText etBeschreibung = findViewById(R.id.create_etBeschreibung);
 
-                if (!editTextTitel.getText().toString().isEmpty() && !editTextDatum.getText().toString().isEmpty()){
-                    data.setTitel(editTextTitel.getText().toString());
-                    data.setDatum(editTextDatum.getText().toString());
-                    data.setBeschreibung(editTextBeschreibung.getText().toString());
+                if (!etTitel.getText().toString().isEmpty() && !etDatum.getText().toString().isEmpty()){
+                    data.setTitel(etTitel.getText().toString());
+                    data.setDatum(etDatum.getText().toString());
+                    data.setBeschreibung(etBeschreibung.getText().toString());
                     db.getRoomDao().insert(data);
                     Toast.makeText(CreateActivity.this, "Deine Aufgabe wurde hinzugefügt", Toast.LENGTH_SHORT).show();
                     startActivity(myIntent);
@@ -74,6 +74,5 @@ public class CreateActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 }

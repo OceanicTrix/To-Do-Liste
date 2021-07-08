@@ -19,10 +19,10 @@ import com.example.to_doliste.room.AufgabeRoomDatabase;
 
 public class UpdateActivity extends AppCompatActivity {
     private int aufgabeId;
-    AufgabeData data = new AufgabeData();
-    AufgabeRoomDatabase db = null;
-    EditText editTextTitel, editTextDatum, editTextBeschreibung;
-    AlertDialog.Builder dialogBuilder;
+    private AufgabeData data = new AufgabeData();
+    private AufgabeRoomDatabase db = null;
+    private EditText etTitel, etDatum, etBeschreibung;
+    private AlertDialog.Builder dialogBuilder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,17 +34,17 @@ public class UpdateActivity extends AppCompatActivity {
         setTitle("Aufgabe bearbeiten");
         db = AufgabeRoomDatabase.getInstance(this);
         Intent intent = getIntent();
-        aufgabeId = intent.getIntExtra("aufgabeId", 1);
+        aufgabeId = intent.getIntExtra("aufgabeId", 0);
         String titel = intent.getStringExtra("aufgabeTitel");
         String datum = intent.getStringExtra("aufgabeDatum");
         String beschreibung = intent.getStringExtra("aufgabeBeschreibung");
 
-        editTextTitel = (EditText)findViewById(R.id.update_etTitel);
-        editTextDatum = (EditText)findViewById(R.id.update_etDatum);
-        editTextBeschreibung = (EditText)findViewById(R.id.update_etBeschreibung);
-        editTextTitel.setText(titel);
-        editTextDatum.setText(datum);
-        editTextBeschreibung.setText(beschreibung);
+        etTitel = findViewById(R.id.update_etTitel);
+        etDatum = findViewById(R.id.update_etDatum);
+        etBeschreibung = findViewById(R.id.update_etBeschreibung);
+        etTitel.setText(titel);
+        etDatum.setText(datum);
+        etBeschreibung.setText(beschreibung);
         dialogBuilder = new AlertDialog.Builder(this);
     }
     @Override
@@ -64,12 +64,13 @@ public class UpdateActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(v.getContext(), MainActivity.class);
-                if (!editTextTitel.getText().toString().isEmpty() && !editTextDatum.getText().toString().isEmpty()) {
+                if (!etTitel.getText().toString().isEmpty() && !etTitel.getText().toString().isEmpty()) {
                     data.setId(aufgabeId);
-                    data.setTitel(editTextTitel.getText().toString());
-                    data.setDatum(editTextDatum.getText().toString());
-                    data.setBeschreibung(editTextBeschreibung.getText().toString());
+                    data.setTitel(etTitel.getText().toString());
+                    data.setDatum(etDatum.getText().toString());
+                    data.setBeschreibung(etBeschreibung.getText().toString());
                     db.getRoomDao().update(data);
+                    Toast.makeText(UpdateActivity.this, "Deine Aufgabe wurde geändert", Toast.LENGTH_SHORT).show();
                     startActivity(myIntent);
                 }
                 else{
@@ -78,7 +79,7 @@ public class UpdateActivity extends AppCompatActivity {
 
                         }
                     });
-                    dialogBuilder.setMessage("Keine Angabe darf leer sein. Das Erstellen der Aufgabe ist fehlgeschlagen.").setTitle("Fehler");
+                    dialogBuilder.setMessage("Keine Angabe darf leer sein. Das Ändern der Aufgabe ist fehlgeschlagen.").setTitle("Fehler");
                     AlertDialog dialog = dialogBuilder.create();
                     dialog.show();
                 }
@@ -91,9 +92,8 @@ public class UpdateActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent myIntent = new Intent(v.getContext(), MainActivity.class);
                 data.setId(aufgabeId);
-                Log.d("id", aufgabeId + "");
                 db.getRoomDao().delete(data);
-                Toast.makeText(UpdateActivity.this, "Deine Aufgabe wurde geändert", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateActivity.this, "Deine Aufgabe wurde gelöscht", Toast.LENGTH_SHORT).show();
                 startActivity(myIntent);
             }
             });
@@ -102,6 +102,7 @@ public class UpdateActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(v.getContext(), MainActivity.class);
+                Toast.makeText(UpdateActivity.this, "Deine Änderung wurde verworfen", Toast.LENGTH_SHORT).show();
                 startActivity(myIntent);
             }
             });
