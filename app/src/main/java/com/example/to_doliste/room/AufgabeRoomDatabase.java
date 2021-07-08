@@ -14,6 +14,7 @@ public abstract class AufgabeRoomDatabase extends androidx.room.RoomDatabase {
     public static AufgabeData data;
     public static synchronized AufgabeRoomDatabase getInstance(Context context) {
         if (INSTANCE == null) {
+            // Datenbank wird erstellt
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(), AufgabeRoomDatabase.class, "Database")
                     .allowMainThreadQueries()
                     .fallbackToDestructiveMigration()

@@ -13,6 +13,7 @@ public class AufgabeData {
     }
     public AufgabeData(){};
 
+    // Attribute der Tabelle
     @PrimaryKey(autoGenerate = true )
     private int id;
 
