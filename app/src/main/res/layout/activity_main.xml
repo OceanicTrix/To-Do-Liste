@@ -3,13 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/backgroundColor"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/auftraege" />
+        android:id="@+id/auftraege"
+        android:background="@color/backgroundColor"
+        android:textColor="@color/textColor"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/main_Create"
@@ -22,14 +25,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:clickable="true"
         app:backgroundTint="@color/purple_500"
-        app:tint="@color/white"/>
+        app:tint="@color/white"
+        android:focusable="true"
+        android:contentDescription="new" />
     <TextView
         android:id="@+id/keineAufgaben"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Es gibt noch keine Aufgaben"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:background="@color/backgroundColor"
+        android:textColor="@color/textColor"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,16 +2,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@android:color/white">
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Titel"
         android:textSize="20dp"
-        android:textColor="@android:color/black"
-        android:layout_marginLeft="10dp"/>
+        android:textColor="@color/textColor"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
     <EditText
         android:id="@+id/create_etTitel"
         android:layout_height="wrap_content"
@@ -20,15 +21,17 @@
         android:hint="Titel"
         android:layout_marginTop="50dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"/>
+        android:layout_marginRight="10dp"
+        android:autofillHints="Title" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:text="Datum"
         android:textSize="20dp"
-        android:textColor="@android:color/black"
-        android:layout_marginLeft="10dp"/>
+        android:textColor="@color/textColor"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
     <EditText
         android:id="@+id/create_etDatum"
         android:layout_height="wrap_content"
@@ -38,15 +41,17 @@
         android:layout_marginTop="130dp"
         tools:ignore="TextFields"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"/>
+        android:layout_marginRight="10dp"
+        android:autofillHints="date" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="170dp"
         android:text="Beschreibung"
         android:textSize="20dp"
-        android:textColor="@android:color/black"
-        android:layout_marginLeft="10dp"/>
+        android:textColor="@color/textColor"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
     <EditText
         android:id="@+id/create_etBeschreibung"
         android:layout_height="200dp"
@@ -55,7 +60,8 @@
         android:layout_marginTop="200dp"
         android:gravity="top"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"/>
+        android:layout_marginRight="10dp"
+        android:autofillHints="description" />
     <Button
         android:id="@+id/create_btnSpeichern"
         android:layout_width="1000dp"
@@ -63,7 +69,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginTop="440dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="5dp"
-        android:text="Speichern"/>
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:text="Speichern" />
 </RelativeLayout>
