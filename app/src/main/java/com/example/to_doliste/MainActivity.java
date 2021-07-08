@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         db = AufgabeRoomDatabase.getInstance(this);
-        addAufgabenToClickableList();
         if(db.getRoomDao().getAll().size() > 0){
             findViewById(R.id.keineAufgaben).setVisibility(View.GONE);
         }
@@ -38,10 +37,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent myIntent = new Intent(v.getContext(), CreateActivity.class);
                 startActivity(myIntent);
-                addAufgabenToClickableList();
             }
         });
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        addAufgabenToClickableList();
+    }
+
     private void addAufgabenToClickableList(){
         if (db == null){
 
