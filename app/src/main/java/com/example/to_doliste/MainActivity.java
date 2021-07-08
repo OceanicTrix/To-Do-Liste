@@ -1,13 +1,9 @@
 package com.example.to_doliste;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -20,7 +16,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
     private AufgabeRoomDatabase db = null;
-    private static Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,32 +23,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         db = AufgabeRoomDatabase.getInstance(this);
         addAufgabenToClickableList();
-        MainActivity.context = getApplicationContext();
         if(db.getRoomDao().getAll().size() > 0){
             findViewById(R.id.keineAufgaben).setVisibility(View.GONE);
         }
-
-        //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-
-
-
-        int nightModeFlags = getContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-        switch (nightModeFlags) {
-            case Configuration.UI_MODE_NIGHT_YES:
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-            break;
-
-            case Configuration.UI_MODE_NIGHT_NO:
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-            break;
-        }
-
     }
-
-
-    public static Context getContext() {
-            return MainActivity.context;
-        }
 
 
     @Override
