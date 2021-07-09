@@ -19,13 +19,15 @@ import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.typeText;
+import static androidx.test.espresso.assertion.ViewAssertions.doesNotExist;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.CoreMatchers.anything;
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.Matchers.not;
+import static org.hamcrest.CoreMatchers.not;
+
 
 public class UpdateActitivityTest {
     AufgabeRoomDatabase db = null;
@@ -35,11 +37,11 @@ public class UpdateActitivityTest {
     @Before
     public void runBeforeEveryTest(){
         db = AufgabeRoomDatabase.getInstance(mActivityRule.getActivity());
-        if (db.getRoomDao().getAll().size() != 0){
-            db.clearAllTables();
-        }
-        AufgabeData data = new AufgabeData("Aufgabe","21.12.2021", ":)");
-        db.getRoomDao().insert(data);
+        onView(withId(R.id.main_Create)).perform(click());
+        onView(withId(R.id.create_etTitel)).perform(typeText("Aufgabe"));
+        onView(withId(R.id.create_etDatum)).perform(typeText("21.12.2021"));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.create_btnSpeichern)).perform(click());
         onData(anything())
                 .inAdapterView(withId(R.id.auftraege))
                 .atPosition(0)
@@ -52,9 +54,8 @@ public class UpdateActitivityTest {
     }
     @Test
     public void testLoeschen(){
-
         onView(withId(R.id.update_btnLoeschen)).perform(click());
-        onView(withText("Aufgabe\n21.12.2021")).check((matches(not(isDisplayed()))));
+        onView(withText("Aufgabe\n21.12.2021")).check(doesNotExist());
     }
     @Test
     public void testAendern(){

@@ -2,6 +2,7 @@ package com.example.to_doliste;
 
 import android.content.Context;
 
+import androidx.test.espresso.Espresso;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
@@ -17,6 +18,7 @@ import org.junit.runner.RunWith;
 import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -35,16 +37,14 @@ public class MainActivityTest {
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(MainActivity.class);
 
-    @Before
-    public void runBeforeEveryTest(){
-        AufgabeData data = new AufgabeData("Aufgabe","21.12.2021", ":)");
-        db = AufgabeRoomDatabase.getInstance(mActivityRule.getActivity());
-        db.clearAllTables();
-        db.getRoomDao().insert(data);
-    }
-
     @Test
     public void klickAufAufgabe() {
+        db = AufgabeRoomDatabase.getInstance(mActivityRule.getActivity());
+        onView(withId(R.id.main_Create)).perform(click());
+        onView(withId(R.id.create_etTitel)).perform(typeText("Aufgabe"));
+        onView(withId(R.id.create_etDatum)).perform(typeText("21.12.2021"));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.create_btnSpeichern)).perform(click());
         onData(anything())
                 .inAdapterView(withId(R.id.auftraege))
                 .atPosition(0)

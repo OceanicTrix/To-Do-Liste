@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         if(db.getRoomDao().getAll().size() > 0){
             findViewById(R.id.keineAufgaben).setVisibility(View.GONE);
         }
+
     }
 
 
@@ -63,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), UpdateActivity.class);
                     AufgabeData selected = (AufgabeData) parent.getItemAtPosition(position);
                     intent.putExtra("aufgabeId", selected.getId());
+                    Log.v("Wieso?", selected.getId() + "");
                     intent.putExtra("aufgabeTitel", selected.getTitel());
                     intent.putExtra("aufgabeDatum", selected.getDatum());
                     intent.putExtra("aufgabeBeschreibung", selected.getBeschreibung());

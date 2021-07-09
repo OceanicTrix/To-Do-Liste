@@ -34,16 +34,15 @@ public class CreateActivityTest {
     @Before
     public void runBeforeEveryTest() {
         db = AufgabeRoomDatabase.getInstance(cActivityRule.getActivity());
-        db.clearAllTables();
     }
 
     @Test
     public void testNeueAufgabe() {
         onView(withId(R.id.create_etTitel)).perform(typeText("Aufgabe"));
-        onView(withId(R.id.create_etDatum)).perform(typeText("21.02.2021"));
+        onView(withId(R.id.create_etDatum)).perform(typeText("21.12.2021"));
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.create_btnSpeichern)).perform(click());
-        onView(withText("Aufgabe\n21.02.2021")).check(matches(isDisplayed()));
+        onView(withText("Aufgabe\n21.12.2021")).check(matches(isDisplayed()));
     }
 
     @Test
