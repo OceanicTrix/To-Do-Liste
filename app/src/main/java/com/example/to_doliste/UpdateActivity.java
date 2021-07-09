@@ -7,7 +7,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -19,11 +18,11 @@ import com.example.to_doliste.room.AufgabeRoomDatabase;
 
 public class UpdateActivity extends AppCompatActivity {
     private int aufgabeId;
-    private AufgabeData data = new AufgabeData();
+    private final AufgabeData data = new AufgabeData();
     private AufgabeRoomDatabase db = null;
     private EditText etTitel, etDatum, etBeschreibung;
     private AlertDialog.Builder dialogBuilder;
-    private String regex = "^[0-3]{1}[0-9]{1}.([0]{1}[1-9]{1}||[1]{1}[0-2]).[1-9]{1}[0-9]{3}$";
+    private final String regex = "^[0-3]{1}[0-9]{1}.([0]{1}[1-9]{1}||[1]{1}[0-2]).[1-9]{1}[0-9]{3}$";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

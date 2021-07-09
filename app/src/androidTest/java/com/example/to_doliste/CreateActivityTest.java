@@ -43,11 +43,13 @@ public class CreateActivityTest {
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.create_btnSpeichern)).perform(click());
         onView(withText("Aufgabe\n21.12.2021")).check(matches(isDisplayed()));
+        db.clearAllTables();
     }
 
     @Test
     public void testFehlerLeer() {
         onView(withId(R.id.create_btnSpeichern)).perform(click());
         onView(withText("Fehler")).check(matches(isDisplayed()));
+        db.clearAllTables();
     }
 }

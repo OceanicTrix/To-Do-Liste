@@ -71,5 +71,7 @@
         android:layout_marginTop="440dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
-        android:text="Speichern" />
+        android:text="Speichern"
+        android:textColor="@color/backgroundColor"
+        android:backgroundTint="@color/button"/>
 </RelativeLayout>

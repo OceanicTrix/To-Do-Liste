@@ -24,8 +24,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:clickable="true"
-        app:backgroundTint="@color/purple_500"
-        app:tint="@color/white"
+        app:backgroundTint="@color/button"
+        app:tint="@color/backgroundColor"
         android:focusable="true"
         android:contentDescription="new" />
     <TextView

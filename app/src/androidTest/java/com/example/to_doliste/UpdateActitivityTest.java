@@ -17,6 +17,7 @@ import org.junit.Test;
 
 import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.clearText;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.doesNotExist;
@@ -51,17 +52,21 @@ public class UpdateActitivityTest {
     public void testVerwerfen(){
         onView(withId(R.id.update_btnVerwerfen)).perform(click());
         onView(withText("Aufgabe\n21.12.2021")).check(matches(isDisplayed()));
+        db.clearAllTables();
     }
     @Test
     public void testLoeschen(){
         onView(withId(R.id.update_btnLoeschen)).perform(click());
         onView(withText("Aufgabe\n21.12.2021")).check(doesNotExist());
+        db.clearAllTables();
     }
     @Test
     public void testAendern(){
-        onView(withId(R.id.update_etTitel)).perform(typeText("Neu"));
+        onView(withId(R.id.update_etTitel)).perform(clearText());
+        onView(withId(R.id.update_etTitel)).perform(typeText("AufgabeNeu"));
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.update_btnSpeichern)).perform(click());
         onView(withText("AufgabeNeu\n21.12.2021")).check(matches(isDisplayed()));
+        db.clearAllTables();
     }
 }

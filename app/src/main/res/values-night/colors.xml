@@ -12,5 +12,7 @@
     <!-- colors for Normal/Light mode -->
     <color name="backgroundColor">#FF212121</color>
     <color name="textColor">#FFFFFFFF</color>
+    <color name="bar">#FF212121</color>
+    <color name="button">#BEBEBE</color>
 
 </resources>

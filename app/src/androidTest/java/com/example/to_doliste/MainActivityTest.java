@@ -51,6 +51,7 @@ public class MainActivityTest {
                 .perform(click());
         onView(withText("Aufgabe")).check(matches(isDisplayed()));
         onView(withText("21.12.2021")).check(matches(isDisplayed()));
+        db.clearAllTables();
     }
 
     @Test
