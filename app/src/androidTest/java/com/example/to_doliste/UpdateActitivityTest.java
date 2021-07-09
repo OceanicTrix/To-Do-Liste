@@ -1,5 +1,6 @@
 package com.example.to_doliste;
 
+import androidx.test.espresso.Espresso;
 import androidx.test.rule.ActivityTestRule;
 
 import com.example.to_doliste.room.AufgabeData;
@@ -17,6 +18,7 @@ import org.junit.Test;
 import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -50,19 +52,15 @@ public class UpdateActitivityTest {
     }
     @Test
     public void testLoeschen(){
-        try{
-            Thread.sleep(2000);
-        }
-        catch (Exception e){
 
-        }
         onView(withId(R.id.update_btnLoeschen)).perform(click());
-        try{
-            Thread.sleep(1000000);
-        }
-        catch (Exception e){
-
-        }
         onView(withText("Aufgabe\n21.12.2021")).check((matches(not(isDisplayed()))));
+    }
+    @Test
+    public void testAendern(){
+        onView(withId(R.id.update_etTitel)).perform(typeText("Neu"));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.update_btnSpeichern)).perform(click());
+        onView(withText("AufgabeNeu\n21.12.2021")).check(matches(isDisplayed()));
     }
 }
