@@ -69,7 +69,7 @@ public class CreateActivity extends AppCompatActivity {
 
                         }
                     });
-                    dialogBuilder.setMessage("Keine Angabe darf leer oder den Vorgaben nicht entsprechen").setTitle("Fehler");
+                    dialogBuilder.setMessage("Keine Angabe darf leer sein oder den Vorgaben nicht entsprechen").setTitle("Fehler");
                     AlertDialog dialog = dialogBuilder.create();
                     dialog.show();
                 }
