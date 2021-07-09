@@ -6,12 +6,7 @@ import androidx.room.PrimaryKey;
 @Entity
 public class AufgabeData {
 
-    public AufgabeData(String titel, String datum, String beschreibung) {
-        this.titel = titel;
-        this.datum = datum;
-        this.beschreibung = beschreibung;
-    }
-    public AufgabeData(){};
+    public AufgabeData(){}
 
     // Attribute der Tabelle
     @PrimaryKey(autoGenerate = true )

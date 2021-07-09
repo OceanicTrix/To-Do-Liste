@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">To-Do</string>
+    <string name="titel">Titel</string>
+    <string name="datum">Datum</string>
+    <string name="date">Datum (tt.mm.jjjj)</string>
+    <string name="beschreibung">Beschreibung</string>
+    <string name="ok_to_empty">Beschreibung (Kann leer gelassen werden)</string>
+    <string name="speichern">Speichern</string>
+    <string name="neu">new</string>
+    <string name="no_data">Es gibt noch keine Aufgaben</string>
+    <string name="delete">Löschen</string>
+    <string name="verwerfen">Verwerfen</string>
 </resources>

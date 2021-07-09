@@ -1,15 +1,13 @@
-package com.example.to_doliste;
+package com.example.to_doliste.tests;
 
 import androidx.test.espresso.Espresso;
+import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.rule.ActivityTestRule;
 
-import com.example.to_doliste.room.AufgabeData;
+import com.example.to_doliste.activities.MainActivity;
+import com.example.to_doliste.R;
 import com.example.to_doliste.room.AufgabeRoomDatabase;
 
-import org.hamcrest.collection.IsEmptyCollection;
-import org.hamcrest.collection.IsEmptyIterable;
-import org.hamcrest.core.Is;
-import org.hamcrest.text.IsEmptyString;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -38,7 +36,7 @@ public class UpdateActitivityTest {
     @Before
     public void runBeforeEveryTest(){
         db = AufgabeRoomDatabase.getInstance(mActivityRule.getActivity());
-        onView(withId(R.id.main_Create)).perform(click());
+        onView(ViewMatchers.withId(R.id.main_Create)).perform(click());
         onView(withId(R.id.create_etTitel)).perform(typeText("Aufgabe"));
         onView(withId(R.id.create_etDatum)).perform(typeText("21.12.2021"));
         Espresso.closeSoftKeyboard();

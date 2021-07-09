@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="@color/backgroundColor"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
 
     <ListView
         android:layout_width="match_parent"
@@ -27,12 +27,12 @@
         app:backgroundTint="@color/button"
         app:tint="@color/backgroundColor"
         android:focusable="true"
-        android:contentDescription="new" />
+        android:contentDescription="@string/neu" />
     <TextView
         android:id="@+id/keineAufgaben"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Es gibt noch keine Aufgaben"
+        android:text="@string/no_data"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
